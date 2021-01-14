@@ -30,13 +30,17 @@ mkShell {
     export PATH="$PATH:$GOROOT/bin:$GOBIN"
     mkdir -pv src
 
-    echo -n "Enter your helsinki username(SOGo): "
-    read -r HELSINKI_USER
-    export HELSINKI_USER
+    if [ -z "$HELSINKI_USER" ]; then
+      echo -n "Enter your helsinki username(SOGo): "
+      read -r HELSINKI_USER
+      export HELSINKI_USER
+    fi
     
-    echo -n "Enter your helsinki password(SOGo): "
-    read -r -s HELSINKI_PASSWORD
-    export HELSINKI_PASSWORD
+    if [ -z "$HELSINKI_PASSWORD" ]; then
+      echo -n "Enter your helsinki password(SOGo): "
+      read -r -s HELSINKI_PASSWORD
+      export HELSINKI_PASSWORD
+    fi
     cd "src"
   '';
 }
