@@ -29,6 +29,14 @@ mkShell {
     mkdir -pv "$GOCACHE"
     export PATH="$PATH:$GOROOT/bin:$GOBIN"
     mkdir -pv src
+
+    echo -n "Enter your helsinki username(SOGo): "
+    read -r HELSINKI_USER
+    export HELSINKI_USER
+    
+    echo -n "Enter your helsinki password(SOGo): "
+    read -r -s HELSINKI_PASSWORD
+    export HELSINKI_PASSWORD
     cd "src"
   '';
 }
